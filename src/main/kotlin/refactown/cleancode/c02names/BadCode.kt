@@ -27,7 +27,7 @@ val intIdade = 30
 val dtNascimento = LocalDate.of(1990,Month.APRIL, 12)
 
 // Etc
-val pessoa : IPessoa = Pessoa()
+private val pessoa : IPessoa = Pessoa()
 val enderecoDeCobrancaDoCliente= EnderecoDoCliente()
 val enderecoDeEntregaDoCliente= EnderecoDoCliente()
 
@@ -38,7 +38,7 @@ val enderecoDeEntregaDoCliente= EnderecoDoCliente()
 
 
 class EnderecoDoCliente
-private interface IPessoa
+internal interface IPessoa
 open class Pessoa: IPessoa
 
 

@@ -27,7 +27,7 @@ val idade = 30
 val nascimento = LocalDate.of(1990,Month.APRIL, 12)
 
 // Etc
-val pessoa : Pessoa = PessoaImpl()
+val pessoa2 : Pessoa = PessoaImpl()
 val enderecoCobranca= Endereco()
 val enderecoEntrega= Endereco()
 
