@@ -3,20 +3,31 @@ package refactown.cleancode.c06objects;
 import java.util.Objects;
 
 public class PersonJ {
+
+    /** name */
     private String name;
+    /** age */
     private int age;
+    /** city */
     private String city;
 
-    public PersonJ(String name, int age, String city) {
-        this.name = name;
-        this.age = age;
-        this.city = city;
+    /** Default Constructor */
+    public PersonJ(){
+
     }
 
+    /**
+     * Retorna o nome.
+     * @return  O nome.
+     * */
     public String getName() {
         return name;
     }
 
+    /**
+     * Determina o nome.
+     * @param name O nome determinado.
+     * */
     public void setName(String name) {
         this.name = name;
     }
@@ -35,6 +46,13 @@ public class PersonJ {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public PersonJ(String name, int age, String city) {
+        this.name = name;
+        this.age = age;
+        this.city = city;
+    }
+
 
     @Override
     public boolean equals(Object o) {
