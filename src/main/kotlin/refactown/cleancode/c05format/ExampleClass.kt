@@ -11,10 +11,10 @@ class ExampleClass {
     }
 
     private fun subFunction11(x: Int) {
-        TODO("not implemented")
+        //
     }
 
     private fun subFunction12() {
-        TODO("not implemented")
+        //
     }
 }

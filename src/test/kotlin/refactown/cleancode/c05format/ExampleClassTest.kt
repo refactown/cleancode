@@ -12,9 +12,4 @@ internal class ExampleClassTest {
         obj.function1()
     }
 
-    @Test
-    fun testFunction2() {
-        val obj = ExampleClass()
-        obj.function2()
-    }
 }

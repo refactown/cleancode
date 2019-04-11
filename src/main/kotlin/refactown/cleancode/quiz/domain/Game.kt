@@ -25,7 +25,7 @@ class Game(val pin: String, val quiz: Quiz, val startTime: LocalDateTime, val ow
     }
 
     private fun validateBeforeFinish(finishTime: LocalDateTime) {
-        if (isFinished) throw IllegalStateException("Game already finished!")
+        if (isFinished) throw IllegalStateException("Match already finished!")
     }
 
     fun currentRound(): Round = rounds[roundIndex]
