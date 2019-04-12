@@ -11,16 +11,16 @@ import java.lang.IllegalArgumentException
 internal class FunctionsKtTest {
 
     @Test
-    fun testRockParerScissors() {
+    fun testRockPaperScissors() {
         // DRAW = 0
         assertEquals(0, rockPaperScissors('R','R'))
         assertEquals(0, rockPaperScissors('P','P'))
         assertEquals(0, rockPaperScissors('S','S'))
-        // Fisrt Wins = 1
+        // Fisrt Wins = -1
         assertEquals(-1, rockPaperScissors('R','S'))
         assertEquals(-1, rockPaperScissors('S','P'))
         assertEquals(-1, rockPaperScissors('P','R'))
-        // Second Wins = 2
+        // Second Wins = 1
         assertEquals(1, rockPaperScissors('S','R'))
         assertEquals(1, rockPaperScissors('P','S'))
         assertEquals(1, rockPaperScissors('R','P'))

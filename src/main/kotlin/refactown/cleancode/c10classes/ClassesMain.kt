@@ -5,10 +5,12 @@ fun main() {
     val bob = Player("Bob (Second)")
     val bestOf3 = BestOfThree(bill, bob, 5)
     bestOf3.play()
+    // Print Results
     if (bestOf3.hasWinner()){
         println("Winner: ${bestOf3.winner()}")
     } else {
-        println ("Draw between ${bestOf3.firstPlayer} and ${bestOf3.secondPlayer}")
+        println ("Draw between ${bestOf3.firstPlayer}" +
+                " and ${bestOf3.secondPlayer}")
     }
     println("Results: ${bestOf3.results()}")
 }

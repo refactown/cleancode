@@ -29,5 +29,5 @@ internal class LogonControllerTest {
 }
 
     fun inject(clazz: Class<*>): Any{
-        return clazz
+        return LogonController(GsonJsonParser())
     }

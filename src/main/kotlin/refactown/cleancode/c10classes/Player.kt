@@ -1,14 +1,10 @@
 package refactown.cleancode.c10classes
 
-import java.time.LocalTime
-import kotlin.random.Random
+import java.time.LocalDateTime
 
 class Player(val name: String) {
 
-    fun play(): Hand {
-        Thread.sleep((7 * LocalTime.now().second).toLong())
-        return Hand.values()[Random(name.hashCode() * LocalTime.now().second).nextInt(0, 2)]
-    }
+    fun play(): Hand = Hand.randomHand()
 
     override fun toString(): String = name
 }

@@ -54,7 +54,6 @@ internal class JsonParsingKtTest {
             fromJsonV2(joeJson, Person::class.java) as Person
         } catch (e: JsonException) {
             assertEquals(JsonSyntaxException::class.java, e?.cause?.javaClass)
-            e.printStackTrace()
         }
     }
 
