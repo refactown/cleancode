@@ -2,9 +2,8 @@ package refactown.cleancode.c10classes
 
 import java.lang.IllegalStateException
 
-class BestOfThree(val firstPlayer: Player, val secondPlayer: Player, val rounds: Int = 3) {
+class BestOfThree(val match: Match, val rounds: Int = 3) {
 
-    private val match: Match = Match(firstPlayer, secondPlayer)
     private var scoreFirstPlayer = 0
     private var scoreSecondPlayer = 0
     private val winnerScore = rounds / 2 + 1
@@ -22,7 +21,8 @@ class BestOfThree(val firstPlayer: Player, val secondPlayer: Player, val rounds:
         }
     }
 
-    private fun alreadyHasWinner(): Boolean = scoreFirstPlayer >= winnerScore || scoreSecondPlayer >= winnerScore
+    private fun alreadyHasWinner(): Boolean = scoreFirstPlayer >= winnerScore
+            || scoreSecondPlayer >= winnerScore
 
     fun hasWinner() = scoreFirstPlayer != scoreSecondPlayer
 
@@ -30,9 +30,9 @@ class BestOfThree(val firstPlayer: Player, val secondPlayer: Player, val rounds:
 
     fun winner(): Player {
         return when {
-            scoreFirstPlayer > scoreSecondPlayer -> firstPlayer
-            scoreSecondPlayer > scoreFirstPlayer -> secondPlayer
-            else -> throw IllegalStateException("There is no winner! It was draw.")
+            scoreFirstPlayer > scoreSecondPlayer -> match.firstPlayer
+            scoreSecondPlayer > scoreFirstPlayer -> match.secondPlayer
+            else -> throw IllegalStateException("There is no winner!")
         }
     }
 }

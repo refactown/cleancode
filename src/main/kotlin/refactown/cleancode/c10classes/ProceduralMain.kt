@@ -26,7 +26,7 @@ fun main() {
     } else if (scoreBob > scoreBill) {
         println("Winner: Bob")
     } else {
-        println("Draw between Bill and Bob")
+        println("Draw")
     }
     println("Results: ${results}")
 }
