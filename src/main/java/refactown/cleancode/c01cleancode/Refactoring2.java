@@ -10,14 +10,14 @@ import static java.lang.reflect.Modifier.isStatic;
 
 public class Refactoring2 {
 
-    private static final Set<Class<?>> INTEIROS = new HashSet<>();
+    private static final Set<Class<?>> INTEGER_TYPES = new HashSet<>();
 
     static {
-        INTEIROS.add(Integer.class);	INTEIROS.add(int.class);
-        INTEIROS.add(Long.class);		INTEIROS.add(long.class);
-        INTEIROS.add(Short.class);		INTEIROS.add(short.class);
-        INTEIROS.add(Byte.class);		INTEIROS.add(byte.class);
-        INTEIROS.add(BigInteger.class);
+        INTEGER_TYPES.add(Integer.class);	INTEGER_TYPES.add(int.class);
+        INTEGER_TYPES.add(Long.class);		INTEGER_TYPES.add(long.class);
+        INTEGER_TYPES.add(Short.class);		INTEGER_TYPES.add(short.class);
+        INTEGER_TYPES.add(Byte.class);		INTEGER_TYPES.add(byte.class);
+        INTEGER_TYPES.add(BigInteger.class);
     }
 
     public static int countIntegerConstants(Class<?> clazz) { // +1
@@ -54,7 +54,7 @@ public class Refactoring2 {
     }
 
     public static boolean isIntConst(Field field) { // +1
-        return INTEIROS.contains(field.getType())
+        return INTEGER_TYPES.contains(field.getType())
                 && isStatic(field.getModifiers())
                 && isFinal(field.getModifiers()); // +1 CC = 3
     }
