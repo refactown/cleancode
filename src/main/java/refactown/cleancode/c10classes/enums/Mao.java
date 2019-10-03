@@ -2,6 +2,7 @@ package refactown.cleancode.c10classes.enums;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public enum Mao {
 
@@ -21,6 +22,10 @@ public enum Mao {
 
 	private Mao(char id) {
 		this.id = id;
+	}
+	
+	public static Mao aleatoria() {
+		return values()[Math.abs(new Random().ints().findFirst().getAsInt() %3)];
 	}
 	
 	public boolean vence(Mao outraMao) {
