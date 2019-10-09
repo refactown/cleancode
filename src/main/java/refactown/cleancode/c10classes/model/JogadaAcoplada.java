@@ -1,6 +1,6 @@
 package refactown.cleancode.c10classes.model;
 
-import refactown.cleancode.c03functions.RockPaperScissors;
+import refactown.cleancode.c03functions.PedraTesouraPapel;
 import refactown.cleancode.c10classes.enums.Mao;
 import refactown.cleancode.c10classes.enums.Resultado;
 import refactown.cleancode.c10classes.enums.ResultadoJogada;
@@ -18,7 +18,7 @@ public class JogadaAcoplada implements Jogada {
 	public ResultadoJogada jogar() {
 		Mao primeira = primeiroJogador.jogar();
 		Mao segunda = segundoJogador.jogar();
-		int resultInt = RockPaperScissors.rockPaperScissors(primeira.getId(), segunda.getId());
+		int resultInt = PedraTesouraPapel.pedraTesouraPapel(primeira.getId(), segunda.getId());
 		Resultado resultadoDoPrimeiro = Resultado.of(resultInt);
 		return ResultadoJogada.of(resultadoDoPrimeiro);
 	}
