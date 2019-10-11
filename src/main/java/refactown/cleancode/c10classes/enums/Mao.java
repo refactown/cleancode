@@ -20,7 +20,7 @@ public enum Mao {
 
 	private final char id;
 
-	private Mao(char id) {
+	Mao(char id) {
 		this.id = id;
 	}
 	

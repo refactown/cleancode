@@ -7,8 +7,8 @@ fun main() {
     var scoreBill = 0
     var scoreBob = 0
     val results = mutableListOf<MatchResult>()
-    var firstResult: Result? = null
-    var matchResult: MatchResult? = null
+    var firstResult: Result?
+    var matchResult: MatchResult?
     for (i in 0 until rounds) {
         var billHand = Hand.randomHand()
         var bobHand = Hand.randomHand()

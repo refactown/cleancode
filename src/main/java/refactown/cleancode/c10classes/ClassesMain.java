@@ -1,7 +1,7 @@
 package refactown.cleancode.c10classes;
 
 import refactown.cleancode.c10classes.model.Jogada;
-import refactown.cleancode.c10classes.model.JogadaAcoplada;
+import refactown.cleancode.c10classes.model.JogadaLegada;
 import refactown.cleancode.c10classes.model.Jogador;
 import refactown.cleancode.c10classes.model.MelhorDeTres;
 
@@ -10,7 +10,7 @@ public class ClassesMain {
 	public static void main(String[] args) {
 		Jogador bill = new Jogador("Bill (Primeiro)");
 		Jogador bob = new Jogador("Bob (Segundo)");
-		Jogada jogada = new JogadaAcoplada(bill, bob);
+		Jogada jogada = new JogadaLegada(bill, bob);
 		MelhorDeTres melhorDeTres = new MelhorDeTres(jogada, 5);
 		melhorDeTres.jogar();
 		// Print

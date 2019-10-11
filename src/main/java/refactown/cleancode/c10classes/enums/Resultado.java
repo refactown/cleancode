@@ -11,7 +11,8 @@ public enum Resultado {
 	
 	private final int valor;
 	
-	private static final Map<Integer, Resultado> RESULTADOS = new HashMap<Integer, Resultado>();
+	private static final Map<Integer, Resultado> RESULTADOS
+			= new HashMap<Integer, Resultado>();
 	
 	static {
 		RESULTADOS.put(-1, PERDE);
@@ -19,7 +20,7 @@ public enum Resultado {
 		RESULTADOS.put(1,VENCE);
 	}
 
-	private Resultado(int valor) {
+	Resultado(int valor) {
 		this.valor = valor;
 	}
 	

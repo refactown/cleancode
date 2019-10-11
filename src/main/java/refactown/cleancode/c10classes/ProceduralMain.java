@@ -3,7 +3,7 @@ package refactown.cleancode.c10classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import refactown.cleancode.c03functions.PedraTesouraPapel;
+import refactown.cleancode.c03functions.PedraPapelTesoura;
 import refactown.cleancode.c10classes.enums.Mao;
 import refactown.cleancode.c10classes.enums.Resultado;
 import refactown.cleancode.c10classes.enums.ResultadoJogada;
@@ -15,14 +15,14 @@ public class ProceduralMain {
 		int scoreBill = 0;
 		int scoreBob = 0;
 		List<ResultadoJogada> resultados = new ArrayList<ResultadoJogada>();
-		Resultado resultadoDoprimeiro = null;
-		ResultadoJogada resultadoJogada = null;
+		Resultado resultadoDoprimeiro ;
+		ResultadoJogada resultadoJogada ;
 		char charBill;
 		char charBob;
 		for (int i=0; i < rodadas; i++) {
 			charBill = Mao.aleatoria().getId();
 			charBob = Mao.aleatoria().getId();
-			resultadoDoprimeiro = Resultado.of(PedraTesouraPapel.pedraTesouraPapel(charBill, charBob));
+			resultadoDoprimeiro = Resultado.of(PedraPapelTesoura.pedraPapelTesoura(charBill, charBob));
 			resultadoJogada = ResultadoJogada.of(resultadoDoprimeiro);
 			if (ResultadoJogada.PRIMEIRO_VENCE.equals(resultadoJogada)) {
 				scoreBill++;

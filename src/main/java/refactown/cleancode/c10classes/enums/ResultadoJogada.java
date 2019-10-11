@@ -20,7 +20,7 @@ public enum ResultadoJogada {
 		JOGADAS.put(Resultado.PERDE, ResultadoJogada.SEGUNDO_VENCE);
 	}
 	
-	private ResultadoJogada(Resultado resultadoDoPrimeiro, Resultado resultadoDoSegundo) {
+	ResultadoJogada(Resultado resultadoDoPrimeiro, Resultado resultadoDoSegundo) {
 		this.resultadoDoPrimeiro = resultadoDoPrimeiro;
 		this.resultadoDoSegundo = resultadoDoSegundo;
 	}

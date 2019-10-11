@@ -2,7 +2,7 @@ package refactown.cleancode.c08boundary.java;
 
 public interface JsonParser {
 
-	public Object fromJson(String json, Class<?> clazz);
+	Object fromJson(String json, Class<?> clazz);
 	
-	public String toJson(Object obj);
+	String toJson(Object obj);
 }
