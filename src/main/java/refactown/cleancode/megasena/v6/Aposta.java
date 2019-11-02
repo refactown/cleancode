@@ -10,6 +10,10 @@ import java.util.Objects;
  */
 public class Aposta {
 
+    public static final int MENOR = 6;
+    public static final int MAIOR = 15;
+    public static final int PRIMEIRO_NUMERO = 1;
+    public static final int ULTIMO_NUMERO = 60;
 
     private final List<Integer> numeros;
 
@@ -21,8 +25,9 @@ public class Aposta {
     }
 
     private boolean isApostaValida(List<Integer> numerosApostados) {
-        return numerosApostados.size() >= 6 && numerosApostados.size() <= 15 &&
-                numerosApostados.stream().distinct().filter(n -> n >= 1 && n <= 60).
+        return numerosApostados.size() >= MENOR && numerosApostados.size() <= MAIOR &&
+                numerosApostados.stream().
+                        distinct().filter(n -> n >= PRIMEIRO_NUMERO && n <= ULTIMO_NUMERO).
                         count() == numerosApostados.size();
     }
 
