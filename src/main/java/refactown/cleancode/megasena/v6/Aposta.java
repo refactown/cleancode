@@ -1,14 +1,15 @@
-package refactown.cleancode.megasena.modelo;
+package refactown.cleancode.megasena.v6;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Representa uma aposta feita por um apostador. Ou seja, um conjunto de 6 a 15 números entre 1 e 60.
- * A aposta tem um estado imutável.
+ * A aposta tem um estado imutável e não tem identidade única, sendo um "Value Object" com números.
  */
 public class Aposta {
+
 
     private final List<Integer> numeros;
 
@@ -25,11 +26,25 @@ public class Aposta {
                         count() == numerosApostados.size();
     }
 
-    public int calculaAcertos(Sorteio sorteio){
-        return (int) numeros.stream().filter(n -> sorteio.getNumeros().contains(n)).count();
+    public int calculaAcertos(Resultado resultado){
+        return (int) numeros.stream().filter(n -> resultado.foiSorteado(n)).count();
     }
 
     public List<Integer> getNumeros() {
         return numeros;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Aposta aposta = (Aposta) o;
+        return Objects.equals(numeros, aposta.numeros);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numeros);
+    }
+
 }
