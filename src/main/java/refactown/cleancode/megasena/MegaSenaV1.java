@@ -44,11 +44,11 @@ public class MegaSenaV1 {
                 }
             }
             if (acertos == 6) {
-                return premioTotal; // 100%
+                return premioTotal; // Sena = 100%
             } else if (acertos == 5) {
-                return premioTotal * 0.2; // 20%
+                return premioTotal * 0.2; // Quina = 20%
             } else if (acertos == 4) {
-                return premioTotal * 0.05; // 5%
+                return premioTotal * 0.05; // Quadra = 5%
             }
         }
         return 0.0;

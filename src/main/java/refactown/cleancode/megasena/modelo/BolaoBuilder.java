@@ -5,6 +5,9 @@ import refactown.cleancode.megasena.v6.Aposta;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Builder para construção de uma instância de <code>Bolao</code>.
+ */
 public class BolaoBuilder {
 
     private String numero;

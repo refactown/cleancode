@@ -23,8 +23,15 @@ public class Bolao extends Bilhete{
         return true;
     }
 
-    private boolean apostasComMesmoTamanho(Bilhete bilhete) {
-        return true;
+    @Override
+    protected int quantidadeMaximaApostas() {
+        return 10;
+    }
+
+    private boolean apostasComMesmoTamanho() {
+        int tamanho = getApostas().get(0).getNumeros().size();
+        return getApostas().stream()
+                .filter(a-> a.getNumeros().size()!=tamanho).count()==0;
     }
 
     public List<Apostador> getParticipantes() {

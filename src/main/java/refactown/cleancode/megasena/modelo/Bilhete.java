@@ -9,11 +9,11 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * O Bilhete é a relação de uma aposta com um ou mais apostadores (bolão).
+ * O Bilhete é a relação de um apostador principal (volante) com várias apostas.
  * Cada bilhete tem um número de identificação que o torna uma entidade.
  * Nesta "Mega Sena" a identificação do apostador volante (principal) é obrigatória).
  */
-public abstract class Bilhete {
+public class Bilhete {
 
     private final String numero; // identificadores são String mesmo sendo "número"
 
