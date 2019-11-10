@@ -5,9 +5,9 @@ import java.util.Map;
 
 public enum Resultado {
 
-	PERDE(-1),
+	VENCE(-1),
 	EMPATE(0),
-	VENCE(1);
+	PERDE(1);
 	
 	private final int valor;
 	
@@ -15,9 +15,9 @@ public enum Resultado {
 			= new HashMap<Integer, Resultado>();
 	
 	static {
-		RESULTADOS.put(-1, PERDE);
+		RESULTADOS.put(-1, VENCE);
 		RESULTADOS.put(0, EMPATE);
-		RESULTADOS.put(1,VENCE);
+		RESULTADOS.put(1,PERDE);
 	}
 
 	Resultado(int valor) {

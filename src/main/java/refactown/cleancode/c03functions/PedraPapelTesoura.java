@@ -21,6 +21,5 @@ public class PedraPapelTesoura {
 	    } else { // S
 	        if (segundo == 'R') return 1; else if (segundo == 'P') return -1; else return 0;
 	    }
-	
 	}
 }

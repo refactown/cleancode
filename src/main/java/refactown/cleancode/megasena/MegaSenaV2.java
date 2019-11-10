@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 public class MegaSenaV2 {
 
     /**
-     * Método que calcula o valor que uma certa aposta deve receber em função do número de acertos.
+     * Método que calcula o valor que uma certa aposta deve receber em função
+     * do número de acertos.
      *
      * @param apostados   Os números jogados em uma aposta.
      * @param premioTotal O valor to prêmio em relação ao número de acertos.

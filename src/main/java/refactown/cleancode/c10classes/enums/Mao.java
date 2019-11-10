@@ -27,11 +27,18 @@ public enum Mao {
 	public static Mao aleatoria() {
 		return values()[Math.abs(new Random().ints().findFirst().getAsInt() %3)];
 	}
-	
+	public static Mao of(char letra){
+		for (Mao mao: values()){
+			if (mao.id == letra){
+				return mao;
+			}
+		}
+		throw new IllegalArgumentException("Letra inválida:"+letra);
+	}
+
 	public boolean vence(Mao outraMao) {
 		return VENCE.get(this) == outraMao;
 	}
-
 	public char getId() {
 		return id;
 	}

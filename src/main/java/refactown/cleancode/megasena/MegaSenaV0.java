@@ -8,7 +8,7 @@ public class MegaSenaV0 {
 
 
     public double megasena(List<Integer> num, double valor) {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>(); // válidos
         for (Integer n: num){
         if (n <1 || n > 60){
         return 0.0; // inválido

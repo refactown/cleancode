@@ -9,7 +9,7 @@ public class MelhorDeTres {
 
 	private final Jogada jogada;
 	private final int rodadas;
-	
+
 	private int scoreDoPrimeiro;
 	private int scoreDoSegundo;
 	private int scoreVencedor;
@@ -60,6 +60,15 @@ public class MelhorDeTres {
 	public List<ResultadoJogada> getResultados() {
 		return new ArrayList<ResultadoJogada>(resultados);
 	}
-	
-	
+
+	public int getScoreDoPrimeiro() {
+		return scoreDoPrimeiro;
+	}
+
+	public int getScoreDoSegundo() {
+		return scoreDoSegundo;
+	}
+
+
 }
+
