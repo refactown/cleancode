@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Refactoring {
 
-    private static final int MAX_SOCIOS_EIRELI = 3;
+    private static final int MAX_SOCIOS_EIRELI = 5;
 
     // nomes Significativos
     int tempoDecorrido = 5;
@@ -36,6 +36,6 @@ public class Refactoring {
 
     // Etc
     private Pessoa pessoa  =new PessoaImpl();
-    Endereco enderecoDeCobrancaDoCliente=new Endereco();
-    Endereco enderecoDeEntregaDoCliente= new Endereco();
+    Endereco enderecoDeCobranca=new Endereco();
+    Endereco enderecoDeEntrega= new Endereco();
 }

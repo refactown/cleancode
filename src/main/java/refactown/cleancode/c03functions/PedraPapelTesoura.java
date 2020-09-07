@@ -5,9 +5,10 @@ import java.util.List;
 
 public class PedraPapelTesoura {
 	
-	private static List<Character> LETRAS_VALIDAS =  Arrays.asList('R', 'S', 'P');
+
 
 	public static int pedraPapelTesoura(char primeiro, char segundo) {
+		List<Character> LETRAS_VALIDAS =  Arrays.asList('R', 'S', 'P');
 	    if (!LETRAS_VALIDAS.contains(primeiro)) {
 	        throw new IllegalArgumentException("Primeira mão inválida:" + primeiro + ". Use " + LETRAS_VALIDAS);
 	    }

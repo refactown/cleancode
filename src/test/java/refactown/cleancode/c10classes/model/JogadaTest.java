@@ -26,3 +26,4 @@ class JogadorMock extends Jogador{
 		return mao;
 	}	
 }
+

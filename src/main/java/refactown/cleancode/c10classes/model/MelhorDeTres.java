@@ -54,7 +54,7 @@ public class MelhorDeTres {
 	}
 
 	private boolean jaTemVencedor() {
-		return scoreDoPrimeiro > scoreVencedor || scoreDoSegundo > scoreVencedor;
+		return scoreDoPrimeiro >= scoreVencedor || scoreDoSegundo >= scoreVencedor;
 	}
 
 	public List<ResultadoJogada> getResultados() {

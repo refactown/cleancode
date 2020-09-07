@@ -21,6 +21,12 @@ public class JogadaSimples implements Jogada{
 	private final Jogador segundoJogador;
 	public JogadaSimples(Jogador primeiroJogador, Jogador segundoJogador) {
 		super();
+		if (primeiroJogador == null){
+			throw new NullPointerException("O primeiro jogador é obrigatório");
+		}
+		if (segundoJogador == null){
+			throw new NullPointerException("O segundo jogador é obrigatório");
+		}
 		this.primeiroJogador = primeiroJogador;
 		this.segundoJogador = segundoJogador;
 	}

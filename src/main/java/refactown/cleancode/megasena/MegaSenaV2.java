@@ -34,7 +34,7 @@ public class MegaSenaV2 {
     }
 
     private boolean isApostaValida(List<Integer> numerosApostados) {
-        if (numerosApostados.size() < 6 || numerosApostados.size() > 60) {
+        if (numerosApostados.size() < 6 || numerosApostados.size() > 15) {
             return false;
         }
         List<Integer> numerosValidos = new ArrayList<>();

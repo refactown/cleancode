@@ -9,7 +9,7 @@ private val beatsMap = mapOf(Hand.PAPER to Hand.ROCK,
 enum class Hand(val id: Char) {
     ROCK('R'), PAPER('P'), SCISSORS('S');
 
-    fun beats(hand: Hand) = beatsMap[this] == hand
+    infix fun beats(hand: Hand) = beatsMap[this] == hand
 
     companion object {
         fun randomHand(): Hand {

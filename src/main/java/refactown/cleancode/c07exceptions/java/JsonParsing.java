@@ -24,6 +24,9 @@ public class JsonParsing {
 	}
 
 	public static Object fromJsonV2(String json, Class<?> clazz) {
+		if (json == null){
+			throw new NullPointerException("A variável json não pode ser nula!");
+		}
 		Gson gson = new Gson();
 		try {
 			return gson.fromJson(json, clazz);

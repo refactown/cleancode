@@ -28,6 +28,7 @@ public class MegaSenaV1 {
             }
             numerosValidos.add(apostado);
         }
+
         if (numerosValidos.size() >= 6 && numerosValidos.size() <= 15) {
             List<Integer> numerosSorteados = new ArrayList<>();
             int numeroSorteado;
@@ -37,12 +38,14 @@ public class MegaSenaV1 {
                     numerosSorteados.add(numeroSorteado);
                 }
             }
+
             int acertos = 0;
             for (Integer apostado : numerosApostados) {
                 if (numerosSorteados.contains(apostado)) {
                     acertos++;
                 }
             }
+
             if (acertos == 6) {
                 return premioTotal; // Sena = 100%
             } else if (acertos == 5) {
