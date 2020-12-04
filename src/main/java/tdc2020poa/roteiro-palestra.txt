@@ -1,0 +1,18 @@
+Roteiro da Palestra
+
+1. Apresentar o escopo da palestra e o problema original do jogo "Pedra, Tesoura e Papel"
+1.1.
+1.2. Esquema visual do jogo "Pedra (R) , Tesoura (S) e Papel (P)"
+1.3. Esquema de entrada/saída da lógica central do jogo e seus resultados possíveis
+1.4. Mostrar um código de teste de unidade que descreve os requisitos do jogo
+
+2. Apresentar a classe PTP e especialmente o método "jogar()"
+
+3. Relacionar o caso com as proposições do capítulo 3 - Funções
+
+4. Criar a classe "Rodada" e trocar 2 parâmetros por apenas um em "jogar()"
+
+5. [CAPÍTULO 6] Avaliar a questão da classe Rodada
+5.1. Rodada é apenas uma estrutura de dados?
+5.2. Converter Rodada para Kotlin e avaliar o ganho
+5.3.

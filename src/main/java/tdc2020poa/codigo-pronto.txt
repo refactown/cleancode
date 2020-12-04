@@ -1,0 +1,15 @@
+// Versão Kotlin da Classe Rodada
+data class Rodada(val primeira: Char, val segunda: Char) {
+    private val validas: List<*> = listOf(PTP.PEDRA, PTP.TESOURA, PTP.PAPEL)
+
+    init {
+        require(validas.contains(primeira)) { "Primeira letra inválida:$primeira. Válidas=$validas" }
+        require(validas.contains(segunda)) { "Segunda letra inválida:$segunda. Válidas=$validas" }
+    }
+    companion object {
+        @JvmStatic
+        fun of(primeira: Char, segunda: Char): Rodada {
+            return Rodada(primeira, segunda)
+        }
+    }
+}
