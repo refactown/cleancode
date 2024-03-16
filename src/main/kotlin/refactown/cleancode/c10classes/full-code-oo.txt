@@ -1,0 +1,137 @@
+package refactown.cleancode.c10classes
+
+fun main() {
+    val bill = Player("Bill (First)")
+    val bob = Player("Bob (Second)")
+    val match = Match(bill, bob)
+    val bestOf = BestOfThree(match, 5)
+    bestOf.play()
+    // Print Results
+    if (bestOf.hasWinner()){
+        println("Winner: ${bestOf.winner()}")
+    } else {
+        println ("Draw")
+    }
+    println("Results: ${bestOf.results()}")
+}
+
+package refactown.cleancode.c10classes
+
+import refactown.cleancode.c03functions.rockPaperScissors
+
+open class Match(val firstPlayer: Player,
+                 val secondPlayer: Player) {
+
+    open fun play(): MatchResult {
+        val first: Char = firstPlayer.play().id
+        val second: Char = secondPlayer.play().id
+        val result = rockPaperScissors(first, second)
+        val firstResult = Result.of(result)
+        return MatchResult.of(firstResult)
+    }
+}
+
+class SmartMatch(firstPlayer: Player, secondPlayer: Player)
+    : Match(firstPlayer, secondPlayer) {
+
+    override fun play(): MatchResult {
+        val firstHand = firstPlayer.play()
+        val secondHand = secondPlayer.play()
+        return when {
+            firstHand.beats(secondHand) -> MatchResult.FIRST_WINS
+            secondHand.beats(firstHand) -> MatchResult.SECOND_WINS
+            else -> MatchResult.DRAW
+        }
+    }
+}
+
+package refactown.cleancode.c10classes
+
+open class Player(val name: String) {
+
+    open fun play(): Hand = Hand.randomHand()
+
+    override fun toString(): String = name
+}
+
+package refactown.cleancode.c10classes
+
+import java.lang.Math.abs
+import java.util.*
+
+private val beatsMap = mapOf(Hand.PAPER to Hand.ROCK,
+        Hand.SCISSORS to Hand.PAPER, Hand.ROCK to Hand.SCISSORS)
+
+enum class Hand(val id: Char) {
+    ROCK('R'), PAPER('P'), SCISSORS('S');
+
+    infix fun beats(hand: Hand) = beatsMap[this] == hand
+
+    companion object {
+        fun randomHand(): Hand {
+            return values()[abs(Random().ints().findFirst().asInt % 3)]
+        }
+    }
+}
+
+private val matchMap = mapOf(Result.WIN to MatchResult.FIRST_WINS,
+        Result.DRAW to MatchResult.DRAW, Result.LOSE to MatchResult.SECOND_WINS)
+
+enum class MatchResult(val firstResult: Result, val secondResult: Result) {
+    FIRST_WINS(Result.WIN, Result.LOSE),
+    DRAW(Result.DRAW, Result.DRAW),
+    SECOND_WINS(Result.LOSE, Result.WIN);
+
+    companion object {
+        fun of(firstResult: Result) = matchMap[firstResult]!!
+    }
+}
+
+private val resultMap = mapOf(-1 to Result.LOSE, 0 to Result.DRAW, 1 to Result.WIN)
+
+enum class Result(val value: Int) {
+    LOSE(-1), DRAW(0), WIN(1);
+
+    companion object {
+        fun of(value: Int): Result = resultMap[value]!!
+    }
+}
+
+package refactown.cleancode.c10classes
+
+import java.lang.IllegalStateException
+
+class BestOfThree(val match: Match, val rounds: Int = 3) {
+
+    private var scoreFirstPlayer = 0
+    private var scoreSecondPlayer = 0
+    private val winnerScore = rounds / 2 + 1
+    private val results = mutableListOf<MatchResult>()
+
+    fun play() {
+        for (i in 0 until rounds) {
+            val matchResult = match.play()
+            results.add(matchResult)
+            when (matchResult) {
+                MatchResult.FIRST_WINS -> scoreFirstPlayer++
+                MatchResult.SECOND_WINS -> scoreSecondPlayer++
+            }
+            if (alreadyHasWinner()) break
+        }
+    }
+
+    private fun alreadyHasWinner(): Boolean = scoreFirstPlayer >= winnerScore
+            || scoreSecondPlayer >= winnerScore
+
+    fun hasWinner() = scoreFirstPlayer != scoreSecondPlayer
+
+    fun results() = results.toList()
+
+    fun winner(): Player {
+        return when {
+            scoreFirstPlayer > scoreSecondPlayer -> match.firstPlayer
+            scoreSecondPlayer > scoreFirstPlayer -> match.secondPlayer
+            else -> throw IllegalStateException("There is no winner!")
+        }
+    }
+}
