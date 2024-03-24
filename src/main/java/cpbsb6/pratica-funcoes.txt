@@ -1,0 +1,17 @@
+Atividade prática  com Gemini
+
+[PROMPT 1]
+
+Considere a seguinte lista de regras para funções baseadas em clean code:
+
+1. Funções devem ser pequenas (<= 20 linhas)
+2. Funções devem fazer apenas uma coisa
+3. Devem ter nomes descritivos do que fazem
+4. Somente um nível de abstração por função
+5. Funções devem ter poucos parâmetros
+
+[PROMPT 2]
+
+Avalie o código a seguir e explique qual regra está e qual não está sendo seguida:
+
+
