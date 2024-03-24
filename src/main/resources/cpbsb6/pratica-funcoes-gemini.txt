@@ -1,0 +1,268 @@
+Considere a seguinte lista de regras para funções baseadas em clean code:
+
+1. Funções devem ser pequenas (<= 20 linhas)
+2. Funções devem fazer apenas uma coisa
+3. Devem ter nomes descritivos do que fazem
+4. Somente um nível de abstração por função
+5. Funções devem ter poucos parâmetros
+
+Para cada regra mostre um exemplo de código Java que descumpre esta regra.
+Exemplos de Código Java que Descumprem Regras de Clean Code para Funções
+1. Funções Devem Ser Pequenas (<= 20 Linhas)
+
+Exemplo:
+
+Java
+public String processarDados(String dados) {
+  // Limpar dados
+  dados = dados.trim().replaceAll("[^\\w\\s]", "");
+
+  // Validar dados
+  if (dados.isEmpty() || dados.length() > 100) {
+    throw new IllegalArgumentException("Dados inválidos");
+  }
+
+  // Converter dados para maiúsculas
+  dados = dados.toUpperCase();
+
+  // Extrair informações relevantes
+  String[] partes = dados.split(" ");
+  String nome = partes[0];
+  String sobrenome = partes[1];
+
+  // Gerar resultado
+  String resultado = nome + " " + sobrenome;
+
+  return resultado;
+}
+Use code with caution.
+Problema: A função processarDados é complexa e faz várias coisas, como limpar, validar, converter e extrair dados. Ela também é longa, com mais de 20 linhas de código.
+
+Solução: Divida a função em várias funções menores, cada uma com um único propósito, como limparDados, validarDados, converterParaMaiusculas, extrairInformacoesRelevantes e gerarResultado.
+
+2. Funções Devem Fazer Apenas Uma Coisa
+
+Exemplo:
+
+Java
+public void salvarUsuario(Usuario usuario) {
+  // Validar usuario
+  if (usuario == null || usuario.getNome().isEmpty()) {
+    throw new IllegalArgumentException("Usuário inválido");
+  }
+
+  // Persistir usuario no banco de dados
+  EntityManager em = Persistence.createEntityManagerFactory("my-persistence-unit").createEntityManager();
+  em.getTransaction().begin();
+  em.persist(usuario);
+  em.getTransaction().commit();
+  em.close();
+
+  // Enviar email de confirmação
+  String email = usuario.getEmail();
+  String mensagem = "Olá " + usuario.getNome() + ", seu cadastro foi realizado com sucesso!";
+  enviarEmail(email, mensagem);
+}
+Use code with caution.
+Problema: A função salvarUsuario faz duas coisas: valida o usuário e o persiste no banco de dados. Ela também envia um email de confirmação, o que não está diretamente relacionado à sua função principal.
+
+Solução: Divida a função em duas funções menores: salvarUsuario e enviarEmailDeConfirmacao. A função salvarUsuario deve se concentrar em persistir o usuário no banco de dados, enquanto a função enviarEmailDeConfirmacao deve ser responsável por enviar o email.
+
+3. Devem Ter Nomes Descritivos do Que Fazem
+
+Exemplo:
+
+Java
+public void calcular(int a, int b) {
+  // ...
+}
+Use code with caution.
+Problema: O nome da função calcular é muito genérico e não indica claramente o que ela faz.
+
+Solução: Renomeie a função para algo mais descritivo, como somar, subtrair, multiplicar ou dividir.
+
+4. Somente Um Nível de Abstração por Função
+
+Exemplo:
+
+Java
+public String formatarData(Date data) {
+  // Converter data para string
+  String dataStr = data.toString();
+
+  // Formatar data
+  if (dataStr.length() == 10) {
+    return dataStr.substring(0, 4) + "-" + dataStr.substring(5, 7) + "-" + dataStr.substring(8, 10);
+  } else {
+    return dataStr;
+  }
+}
+Use code with caution.
+Problema: A função formatarData mistura dois níveis de abstração: conversão de data para string e formatação da string.
+
+Solução: Divida a função em duas funções menores: converterDataParaString e formatarDataString. A função converterDataParaString deve ser responsável por converter a data para uma string, enquanto a função formatarDataString deve formatar a string de acordo com o formato desejado.
+
+5. Funções Devem Ter Poucos Parâmetros
+
+Exemplo:
+
+Java
+public void calcularMedia(int a, int b, int c, int d, int e) {
+  // ...
+}
+Use code with caution.
+Problema: A função calcularMedia tem cinco parâmetros, o que torna difícil de ler e entender.
+
+Solução: Reduza o número de parâmetros da função. Uma opção seria criar um objeto para encapsular os valores e passá-
+
+profile picture
+
+Considere o código a seguir:
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * Versão com nomes, formatação e comentários melhorados.
+ * O método ainda é monolítico e muito grande (34 linhas).
+ */
+public class MegaSenaV1 {
+
+  /**
+   * Método que calcula o valor que uma certa aposta deve receber em função do número de acertos.
+   *
+   * @param numerosApostados Os números jogados em uma aposta.
+   * @param premioTotal   O valor to prêmio em relação ao número de acertos.
+   * @return O valor do prêmio a ser recebido por esta aposta.
+   */
+  public double calculaPremio(List<Integer> numerosApostados, double premioTotal) {
+    List<Integer> numerosValidos = new ArrayList<>();
+    for (Integer apostado : numerosApostados) {
+      if (apostado < 1 || apostado > 60) {
+        return 0.0; // inválido
+      }
+      if (numerosValidos.contains(apostado)) {
+        return 0.0; // repetido
+      }
+      numerosValidos.add(apostado);
+    }
+
+    if (numerosValidos.size() >= 6 && numerosValidos.size() <= 15) {
+      List<Integer> numerosSorteados = new ArrayList<>();
+      int numeroSorteado;
+      while (numerosSorteados.size() < 6) {
+        numeroSorteado = new Random().nextInt(59) + 1;
+        if (!numerosSorteados.contains(numeroSorteado)) {
+          numerosSorteados.add(numeroSorteado);
+        }
+      }
+
+      int acertos = 0;
+      for (Integer apostado : numerosApostados) {
+        if (numerosSorteados.contains(apostado)) {
+          acertos++;
+        }
+      }
+
+      if (acertos == 6) {
+        return premioTotal; // Sena = 100%
+      } else if (acertos == 5) {
+        return premioTotal * 0.2; // Quina = 20%
+      } else if (acertos == 4) {
+        return premioTotal * 0.05; // Quadra = 5%
+      }
+    }
+    return 0.0;
+  }
+}
+
+Avalie este código com base nas cinco regras apresentadas anteriormente e diga qual delas está sendo cumprida e qual não está.
+Show drafts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Análise do código MegaSenaV1 em relação às regras de Clean Code:
+Regras cumpridas:
+
+Nomes descritivos: O nome da classe MegaSenaV1 e do método calculaPremio são descritivos e informam claramente o que cada um faz.
+Comentários: O código está bem comentado, explicando o que cada parte faz.
+Regras não cumpridas:
+
+Tamanho da função: O método calculaPremio é muito grande, com 34 linhas de código. Isso torna o código difícil de ler e entender.
+Função única: O método calculaPremio faz várias coisas:
+Valida os números apostados.
+Gera os números sorteados.
+Calcula o número de acertos.
+Retorna o valor do prêmio.
+Abstração: O método calculaPremio mistura diferentes níveis de abstração, como validação de dados, geração de números aleatórios e cálculo de prêmio.
+Número de parâmetros: O método calculaPremio recebe dois parâmetros: numerosApostados e premioTotal. Isso torna o código menos flexível e reutilizável.
+Sugestões de melhorias:
+
+Dividir o método em funções menores: Cada função deve ter um único propósito e ser pequena o suficiente para ser facilmente entendida.
+Extrair a lógica de validação de números: Criar uma função separada para validar os números apostados e retornar um valor booleano indicando se a aposta é válida.
+Extrair a lógica de geração de números sorteados: Criar uma função separada para gerar os números sorteados e retornar uma lista de números.
+Extrair a lógica de cálculo do prêmio: Criar uma função separada para calcular o valor do prêmio com base no número de acertos.
+Reduzir o número de parâmetros: Usar um objeto para encapsular os dados da aposta, como os números apostados e o valor da aposta.
+Exemplo de código após as melhorias:
+
+Java
+public class MegaSenaV2 {
+
+    public double calculaPremio(Aposta aposta, double premioTotal) {
+        if (!aposta.ehValida()) {
+            return 0.0;
+        }
+
+        List<Integer> numerosSorteados = gerarNumerosSorteados();
+
+        int acertos = calcularAcertos(aposta.getNumeros(), numerosSorteados);
+
+        return calcularPremio(acertos, premioTotal);
+    }
+
+    private boolean ehValida(List<Integer> numeros) {
+        // ...
+    }
+
+    private List<Integer> gerarNumerosSorteados() {
+        // ...
+    }
+
+    private int calcularAcertos(List<Integer> numerosApostados, List<Integer> numerosSorteados) {
+        // ...
+    }
+
+    private double calcularPremio(int acertos, double premioTotal) {
+        // ...
+    }
+
+}
+
+public class Aposta {
+
+    private List<Integer> numeros;
+    private double valor;
+
+    // ...
+
+}
+Use code with caution.
+O código acima segue as regras de Clean Code e é mais fácil de ler, entender e manter.
